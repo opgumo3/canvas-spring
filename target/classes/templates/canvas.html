@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>양아치 캔버스</title>
+    <link rel="stylesheet" type="text/css" href="/stylesheet.css">
+    <link href="/tabler/dist/css/tabler.min.css" rel="stylesheet">
+    <link href="/tabler/dist/css/tabler-flags.min.css" rel="stylesheet">
+    <link href="/tabler/dist/css/tabler-payments.min.css" rel="stylesheet">
+    <link href="/tabler/dist/css/demo.min.css" rel="stylesheet">
+    <!-- 토스페이먼츠 결제창 SDK 추가 -->
+    <script src="https://js.tosspayments.com/v1/payment"></script>
+</head>
+<body oncontextmenu="return false">
+<div class="page">
+    <div class="page-wrapper">
+        <div class="page-header d-print-none">
+            <div class="container-xl">
+                <div class="row g-2 align-items-center">
+                    <div class="col">
+                        <h2 class="page-title">꼼짝마! 100원 주면 다운로드 시켜줄게.</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-body">
+            <div class="container-xl">
+                <div class="row row-cards mb-3">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title">배경 설정</div>
+                                <!-- 캔버스 설정 -->
+                                <div class="mb-3">
+                                    <label class="form-label">배경색상 <input type="color" id="background-color" onchange="makeCanvas()" class="form-control form-control-color"></label>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">캔버스 크기</label>
+                                    <select id="canvas-size" onchange="reSizeCanvas(this)" class="form-select">
+                                        <option>640*360</option>
+                                        <option>640*400</option>
+                                        <option>1280*720</option>
+                                        <option>1920*1080</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title">글자 설정</div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">내용 <input type="text" id="contents" onchange="makeCanvas()" class="form-control"></label>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">글자색 <input type="color" id="font-color" onchange="makeCanvas()" class="form-control form-control-color"></label>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">글꼴
+                                        <select id="font" onchange="makeCanvas()" class="form-select">
+                                            <option>Arial</option>
+                                            <option>Verdana</option>
+                                            <option selected>Courier New</option>
+                                        </select>
+                                    </label>
+                                </div>
+
+                                <div class="mb-3">
+                                    <div class="row g-2 align-items-center">
+                                        <div class="col">
+                                            <label class="form-label">글자 크기
+                                                <select id="font-size" onchange="makeCanvas()" class="form-select">
+                                                    <option>20</option>
+                                                    <option>30</option>
+                                                    <option selected>40</option>
+                                                    <option>50</option>
+                                                    <option>60</option>
+                                                </select>
+                                            </label>
+                                        </div>
+
+                                        <div class="col-auto">
+                                            <button id="payment-button" class="btn btn-outline-success">결제하고 다운로드 하기</button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <canvas id="canvas" width="640" height="360"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/script.js"></script>
+<script>
+    let payButton = document.getElementById('payment-button');
+    payButton.addEventListener('click', paymentStart);
+</script>
+</body>
+</html>
